@@ -12,13 +12,13 @@
                         <div class="card-body">
                             @if (session()->has('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('success') }}    
+                                {{ session('success') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endif
                             @if (session()->has('loginError'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                {{ session('loginError') }}    
+                                {{ session('loginError') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endif
@@ -64,7 +64,7 @@
                                 </div>
                                 <!-- Register form-->
                                 <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                    <form action="/register" method="post">
+                                    <form action="{{ route('register') }}" method="post">
                                         @csrf
                                         <!-- Form Group (name)-->
                                         <div class="mb-3">
