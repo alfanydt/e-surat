@@ -55,7 +55,7 @@
                                         <i class="fas fa-star"></i>
                                     </button>
                                 </td>
-                                <td>Surat Permohonan</td>
+                                <td>Surat Pemberitahuan Pendaftaran</td>
                             </tr>
                         </tbody>
                     </table>
