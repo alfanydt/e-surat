@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use App\Models\Department;
 use App\Models\Letter;
@@ -24,6 +25,31 @@ class LetterController extends Controller
         // $senders = Sender::all();
 
         // return view('letters.index', compact('letters', 'departments', 'senders'));
+    }
+
+    // public function preview()
+    // {
+    //     return view('pages.admin.letter.preview');
+    // }
+
+    // public function preview(Request $request)
+    // {
+    //     $data = $request->all();
+    //     return view('letters.preview', compact('data'));
+    // }
+    // use PDF;
+
+    // public function generatePDF(Request $request)
+    // {
+    //     $data = json_decode($request->input('data'), true);
+    //     $pdf = Pdf::loadView('letters.pdf', compact('data'));
+    //     return $pdf->download('surat.pdf');
+    // }
+
+    public function printLembur(Request $request)
+    {
+        $data = $request->all();
+        return view('pages.admin.letter.print-lembur', compact('data'));
     }
     public function cetak()
     {

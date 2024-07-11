@@ -48,6 +48,9 @@ Route::prefix('admin')
         ]);
 
     // Route::post('letter/cetak', [LetterController::class, 'cetak'])->name('cetak');
+    // Route::get('letter/surat-preview', [LetterController::class, 'preview'])->name('surat-preview');
+    // Route::post('letter/preview', [LetterController::class, 'preview'])->name('letter.preview');
+    // Route::post('letter/generatePDF', [LetterController::class, 'generatePDF'])->name('letter.generatePDF');
 
     Route::get('letter/surat-cetak', [LetterController::class, 'cetak'])->name('surat-cetak');
     Route::get('letter/surat-masuk', [LetterController::class, 'incoming_mail'])->name('surat-masuk');
@@ -57,6 +60,7 @@ Route::prefix('admin')
     Route::get('letter/download/{id}', [LetterController::class, 'download_letter'])->name('download-surat');
 
     //print
+    Route::post('letter/print-lembur', [LetterController::class, 'printLembur'])->name('letter.printLembur');
     Route::get('print/surat-masuk', [PrintController::class, 'index'])->name('print-surat-masuk');
     Route::get('print/surat-keluar', [PrintController::class, 'outgoing'])->name('print-surat-keluar');
 
