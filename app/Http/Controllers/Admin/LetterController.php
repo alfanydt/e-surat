@@ -10,6 +10,7 @@ use App\Models\Department;
 use App\Models\Letter;
 use App\Models\Sender;
 // use App\Traits\PDF;
+use Carbon\Carbon;
 
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
@@ -49,6 +50,17 @@ class LetterController extends Controller
     public function printLembur(Request $request)
     {
         $data = $request->all();
+        return view('pages.admin.letter.print-lembur', compact('data'));
+    }
+    public function showLetter($id)
+    {
+        $data = [
+            'letter_date' => '2024-07-12',
+        ];
+
+        Carbon::setLocale('id'); // Set locale bahasa Indonesia
+        $data['formatted_date'] = Carbon::parse($data['letter_date'])->format('j F Y');
+
         return view('pages.admin.letter.print-lembur', compact('data'));
     }
     public function cetak()

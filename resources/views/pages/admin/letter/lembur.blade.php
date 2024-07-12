@@ -142,60 +142,60 @@
                             <form action="{{ route('letter.printLembur') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-        <div class="form-group">
-        <label for="letter_date">Tanggal Surat</label>
-        <input type="date" class="form-control" id="letter_date" name="letter_date" required>
-    </div>
-    <div class="form-group">
-        <label for="recipient">Kepada Yth</label>
-        <input type="text" class="form-control" id="recipient" name="recipient" required>
-    </div>
-    <div class="form-group">
-        <label for="address">Alamat</label>
-        <input type="text" class="form-control" id="address" name="address" required>
-    </div>
-    <div class="form-group">
-        <label for="sender_name">Nama Pengirim</label>
-        <input type="text" class="form-control" id="sender_name" name="sender_name" required>
-    </div>
-    <div class="form-group">
-        <label for="sender_position">Jabatan Pengirim</label>
-        <input type="text" class="form-control" id="sender_position" name="sender_position" required>
-    </div>
-    <div class="form-group">
-        <label for="overtime_reason">Alasan Lembur</label>
-        <textarea class="form-control" id="overtime_reason" name="overtime_reason" rows="3" required></textarea>
-    </div>
-    <div class="form-group">
-        <label for="employee_details">Detail Pegawai (Nama, Jumlah Hari)</label>
-        <textarea class="form-control" id="employee_details" name="employee_details" rows="5" required></textarea>
-    </div>
-    <div class="form-group">
-        <label for="approval1">Nama Persetujuan 1</label>
-        <input type="text" class="form-control" id="approval1" name="approval1" required>
-    </div>
-    <div class="form-group">
-        <label for="approval1_position">Jabatan Persetujuan 1</label>
-        <input type="text" class="form-control" id="approval1_position" name="approval1_position" required>
-    </div>
-    <div class="form-group">
-        <label for="approval2">Nama Persetujuan 2</label>
-        <input type="text" class="form-control" id="approval2" name="approval2" required>
-    </div>
-    <div class="form-group">
-        <label for="approval2_position">Jabatan Persetujuan 2</label>
-        <input type="text" class="form-control" id="approval2_position" name="approval2_position" required>
-    </div>
-    <div class="form-group">
-        <label for="approval3">Nama Mengetahui</label>
-        <input type="text" class="form-control" id="approval3" name="approval3" required>
-    </div>
-    <div class="form-group">
-        <label for="approval3_position">Jabatan Mengetahui</label>
-        <input type="text" class="form-control" id="approval3_position" name="approval3_position" required>
-    </div>
+                                    <div class="form-group">
+                                    <label for="letter_date">Tanggal Surat</label>
+                                    <input type="date" class="form-control" id="letter_date" name="letter_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient">Kepada Yth</label>
+                                    <input type="text" class="form-control" id="recipient" name="recipient" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Alamat</label>
+                                    <input type="text" class="form-control" id="address" name="address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sender_name">Nama Pengirim</label>
+                                    <input type="text" class="form-control" id="sender_name" name="sender_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sender_position">Jabatan Pengirim</label>
+                                    <input type="text" class="form-control" id="sender_position" name="sender_position" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="overtime_reason">Alasan Lembur</label>
+                                    <textarea class="form-control" id="overtime_reason" name="overtime_reason" rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="employee_details">Detail Pegawai (Nama, Jumlah Hari)</label>
+                                    <textarea class="form-control" id="employee_details" name="employee_details" rows="5" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="approval1">Nama Persetujuan 1</label>
+                                    <input type="text" class="form-control" id="approval1" name="approval1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="approval1_position">Jabatan Persetujuan 1</label>
+                                    <input type="text" class="form-control" id="approval1_position" name="approval1_position" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="approval2">Nama Persetujuan 2</label>
+                                    <input type="text" class="form-control" id="approval2" name="approval2" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="approval2_position">Jabatan Persetujuan 2</label>
+                                    <input type="text" class="form-control" id="approval2_position" name="approval2_position" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="approval3">Nama Mengetahui</label>
+                                    <input type="text" class="form-control" id="approval3" name="approval3" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="approval3_position">Jabatan Mengetahui</label>
+                                    <input type="text" class="form-control" id="approval3_position" name="approval3_position" required>
+                                </div>
                                 <div class="mb-3 row">
-                                    <div class="col-sm-9 offset-sm-3">
+                                    <div class="col-sm-9 offset-sm-0">
                                         <button type="submit" class="btn btn-primary">Cetak</button>
                                     </div>
                                 </div>

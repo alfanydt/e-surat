@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Surat Upah Lembur</title>
+    <!-- <title>Surat Upah Lembur</title> -->
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
@@ -28,7 +28,7 @@
             padding: 8px;
             text-align: left;
         }
-        .signature {
+        /* .signature {
             margin-top: 40px;
         }
         .signature-container {
@@ -47,11 +47,56 @@
             flex: 1;
             text-align: center;
             margin-top: 40px;
+        } */
+        .signature-container {
+    display: flex;
+    justify-content: space-between; /* Mengatur jarak antara signature-left dan signature-right */
+    flex-wrap: wrap; /* Agar dapat memperlakukan signature-center sebagai baris baru */
+}
+
+.signature-left,
+.signature-right {
+    flex-basis: 45%; /* Lebar masing-masing signature-left dan signature-right */
+    text-align: center;
+}
+
+.signature-center {
+    flex-basis: 100%; /* Mengisi lebar signature-center agar memenuhi satu baris */
+    text-align: center; /* Memusatkan teks pada signature-center */
+}
+        .text-right {
+            text-align: right;
         }
+        .info-table {
+            width: auto;
+        }
+        .info-table td {
+            padding: 2px 8px;
+        }
+        .underline-text {
+            text-decoration: underline;
+        }
+
+
+        @media print {
+            a[href]:after, .header, .footer {
+                content: none !important;
+                display: none !important;
+            }
+            @page {
+                margin: 0;
+            }
+            body {
+                margin: 1.6cm;
+            }
+    }
     </style>
 </head>
 <body>
-    <p class="text-right">{{ $data['letter_date'] }}</p>
+    <!-- <p class="text-align: right;">{{ $data['letter_date'] }}</p> -->
+    <p style="text-align: right;">
+        Magetan, {{ \Carbon\Carbon::parse($data['letter_date'])->format('j F Y') }}
+    </p>
 
     <p>Kepada Yth :<br>
     {{ $data['recipient'] }}<br>
@@ -60,12 +105,24 @@
     <p>Dengan hormat,</p>
 
     <p>Yang bertanda tangan dibawah ini :</p>
-    <blockquote>
+    <!-- <blockquote>
         <p>
             Nama    : {{ $data['sender_name'] }}<br>
             Jabatan : {{ $data['sender_position'] }}
         </p>
-    </blockquote>
+    </blockquote> -->
+    <table class="info-table">
+        <tr>
+            <td>Nama</td>
+            <td>:</td>
+            <td>{{ $data['sender_name'] }}</td>
+        </tr>
+        <tr>
+            <td>Jabatan</td>
+            <td>:</td>
+            <td>{{ $data['sender_position'] }}</td>
+        </tr>
+    </table>
 
     <p>Sehubungan dengan pelaksanaan {{ $data['overtime_reason'] }}, dengan ini kami mengajukan permohonan upah lembur untuk karyawan berikut:</p>
 
@@ -91,28 +148,30 @@
     <p>Demikian permohonan ini kami ajukan untuk mendapatkan persetujuan.</p>
 
     <div class="signature-container">
-        <div class="signature-left">
-            <p>
-                Disetujui,<br>
-                <strong>{{ $data['approval1'] }}</strong><br>
-                {{ $data['approval1_position'] }}
-            </p>
-        </div>
-        <div class="signature-right">
-            <p>
-                Yang mengajukan,<br>
-                <strong>{{ $data['approval2'] }}</strong><br>
-                {{ $data['approval2_position'] }}
-            </p>
-        </div>
+    <div class="signature-left">
+        <p>
+            Disetujui,<br><br><br>
+            <strong class="underline-text">{{ $data['approval1'] }}</strong><br>
+            {{ $data['approval1_position'] }}
+        </p>
+    </div>
+    <div class="signature-right">
+        <p>
+            Yang mengajukan,<br><br><br>
+            <strong class="underline-text">{{ $data['approval2'] }}</strong><br>
+            {{ $data['approval2_position'] }}
+        </p>
     </div>
     <div class="signature-center">
         <p>
-            Mengetahui dan menyetujui,<br>
-            <strong>{{ $data['approval3'] }}</strong><br>
+            Mengetahui dan menyetujui,<br><br><br>
+            <strong class="underline-text">{{ $data['approval3'] }}</strong><br>
             {{ $data['approval3_position'] }}
         </p>
     </div>
+</div>
+
+
 
     <script>
         window.print();
