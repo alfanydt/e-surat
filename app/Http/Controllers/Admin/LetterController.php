@@ -52,6 +52,17 @@ class LetterController extends Controller
         $data = $request->all();
         return view('pages.admin.letter.print-lembur', compact('data'));
     }
+
+    public function printDaftar(Request $request)
+    {
+        $data = $request->all();
+        $formattedDate = date('d F Y', strtotime($data['letter_date']));
+        $data['formatted_date'] = $formattedDate;
+
+        return view('pages.admin.letter.print-daftar', compact('data'));
+    }
+
+
     public function showLetter($id)
     {
         $data = [
