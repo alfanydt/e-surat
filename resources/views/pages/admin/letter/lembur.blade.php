@@ -48,7 +48,7 @@
                             <tr>
                                 <td>2</td>
                                 <td>
-                                    <button class="btn btn-primary btn-sm" onclick="showForm('Surat Permohonan')">
+                                    <button class="btn btn-primary btn-sm" onclick="showForm('Surat Pendaftaran')">
                                         <i class="fas fa-file-word"></i> Buat Surat
                                     </button>
                                     <!-- <button class="btn btn-warning btn-sm">
@@ -60,7 +60,7 @@
                             <tr>
                                 <td>3</td>
                                 <td>
-                                    <button class="btn btn-primary btn-sm" onclick="showForm('Surat Permohonan')">
+                                    <button class="btn btn-primary btn-sm" onclick="showForm('Surat Pemblokiran')">
                                         <i class="fas fa-file-word"></i> Buat Surat
                                     </button>
                                     <!-- <button class="btn btn-warning btn-sm">
@@ -72,7 +72,7 @@
                             <tr>
                                 <td>4</td>
                                 <td>
-                                    <button class="btn btn-primary btn-sm" onclick="showForm('Surat Permohonan')">
+                                    <button class="btn btn-primary btn-sm" onclick="showForm('Surat ')">
                                         <i class="fas fa-file-word"></i> Buat Surat
                                     </button>
                                     <!-- <button class="btn btn-warning btn-sm">
@@ -203,109 +203,148 @@
                         </div>
                     </div>
                 `;
-            } else if (letterType === 'Surat Permohonan') {
+            } else if (letterType === 'Surat Pendaftaran') {
                 formContent = `
                     <div class="card mb-4">
-                        <div class="card-header">Form Surat Pemberitahuan Sudah Didaftarkan</div>
+                        <div class="card-header">Form Surat Pemberitahuan Pendaftaran</div>
                         <div class="card-body">
-                            <form action="{{ route('letter.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('letter.printDaftar') }}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <div class="mb-3 row">
-                                    <label for="letter_no" class="col-sm-3 col-form-label">Nomor Surat</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control @error('letter_no') is-invalid @enderror" value="{{ old('letter_no') }}" name="letter_no" placeholder="Nomor Surat.." required>
-                                    </div>
-                                    @error('letter_no')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                <div class="form-group">
+                                    <label for="letter_no">Nomor Surat</label>
+                                    <input type="text" class="form-control" id="letter_no" name="letter_no" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="letter_date">Tanggal Surat</label>
+                                    <input type="date" class="form-control" id="letter_date" name="letter_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="location">Lokasi</label>
+                                    <input type="text" class="form-control" id="location" name="location" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="regarding">Perihal</label>
+                                    <input type="text" class="form-control" id="regarding" name="regarding" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="attachment">Lampiran</label>
+                                    <input type="text" class="form-control" id="attachment" name="attachment">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient_name">Nama Penerima</label>
+                                    <input type="text" class="form-control" id="recipient_name" name="recipient_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient_address">Alamat Penerima</label>
+                                    <input type="text" class="form-control" id="recipient_address" name="recipient_address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sender_name">Nama Pengirim</label>
+                                    <input type="text" class="form-control" id="sender_name" name="sender_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sender_position">Jabatan Pengirim</label>
+                                    <input type="text" class="form-control" id="sender_position" name="sender_position" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sender_address">Alamat Pengirim</label>
+                                    <input type="text" class="form-control" id="sender_address" name="sender_address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="collateral_description">Deskripsi Agunan</label>
+                                    <textarea class="form-control" id="collateral_description" name="collateral_description" rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="auction_date">Tanggal Lelang</label>
+                                    <input type="date" class="form-control" id="auction_date" name="auction_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc">Tembusan</label>
+                                    <input type="text" class="form-control" id="cc" name="cc">
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="letter_date" class="col-sm-3 col-form-label">Tanggal Surat</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" class="form-control @error('letter_date') is-invalid @enderror" value="{{ old('letter_date') }}" name="letter_date" placeholder="YYYY-MM-DD" required>
-                                    </div>
-                                    @error('letter_date')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="to" class="col-sm-3 col-form-label">Kepada Yth</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control @error('to') is-invalid @enderror" value="{{ old('to') }}" name="to" placeholder="Kepada Yth" required>
-                                    </div>
-                                    @error('to')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="sender_name" class="col-sm-3 col-form-label">Nama Pengirim</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control @error('sender_name') is-invalid @enderror" value="{{ old('sender_name') }}" name="sender_name" placeholder="Nama Pengirim" required>
-                                    </div>
-                                    @error('sender_name')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="sender_position" class="col-sm-3 col-form-label">Jabatan Pengirim</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control @error('sender_position') is-invalid @enderror" value="{{ old('sender_position') }}" name="sender_position" placeholder="Jabatan Pengirim" required>
-                                    </div>
-                                    @error('sender_position')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="letter_body" class="col-sm-3 col-form-label">Isi Surat</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="form-control @error('letter_body') is-invalid @enderror" name="letter_body" rows="5" required>{{ old('letter_body') }}</textarea>
-                                    </div>
-                                    @error('letter_body')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="approval" class="col-sm-3 col-form-label">Disetujui Oleh</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control @error('approval') is-invalid @enderror" value="{{ old('approval') }}" name="approval" placeholder="Disetujui Oleh" required>
-                                    </div>
-                                    @error('approval')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="approval_position" class="col-sm-3 col-form-label">Jabatan Penyetuju</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control @error('approval_position') is-invalid @enderror" value="{{ old('approval_position') }}" name="approval_position" placeholder="Jabatan Penyetuju" required>
-                                    </div>
-                                    @error('approval_position')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 row">
-                                    <div class="col-sm-9 offset-sm-3">
+                                    <div class="col-sm-9 offset-sm-0">
                                         <button type="submit" class="btn btn-primary">Cetak</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
+                `;
+            } else if (letterType === 'Surat Pemblokiran') {
+                formContent = `
+                     <div class="card mb-4">
+                        <div class="card-header">Form Surat Permohonan Pemblokiran Kendaraan</div>
+                        <div class="card-body">
+                            <form action="{{ route('letter.printPemblokiran') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="letter_no">Nomor Surat</label>
+                                    <input type="text" class="form-control" id="letter_no" name="letter_no" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="letter_date">Tanggal Surat</label>
+                                    <input type="date" class="form-control" id="letter_date" name="letter_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lamp">Lampiran</label>
+                                    <input type="text" class="form-control" id="lamp" name="lamp" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="regarding">Perihal</label>
+                                    <input type="text" class="form-control" id="regarding" name="regarding" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient_name">Nama Penerima</label>
+                                    <input type="text" class="form-control" id="recipient_name" name="recipient_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient_address">Alamat Penerima</label>
+                                    <input type="text" class="form-control" id="recipient_address" name="recipient_address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sender_name">Nama Pengirim</label>
+                                    <input type="text" class="form-control" id="sender_name" name="sender_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sender_position">Jabatan Pengirim</label>
+                                    <input type="text" class="form-control" id="sender_position" name="sender_position" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sender_address">Alamat Pengirim</label>
+                                    <input type="text" class="form-control" id="sender_address" name="sender_address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="vehicle_details">Detail Kendaraan('Merk / Type',
+                                    'Model',
+                                    'Tahun',
+                                    'Warna',
+                                    'No. Mesin',
+                                    'No. Rangka',
+                                    'No. BPKB',
+                                    'No. Polisi',
+                                    'Atas Nama',
+                                    'Alamat')</label>
+                                    <textarea class="form-control" id="vehicle_details" name="vehicle_details" rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="blocking_reason">Alasan Pemblokiran</label>
+                                    <textarea class="form-control" id="blocking_reason" name="blocking_reason" rows="3" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc">Tembusan</label>
+                                    <input type="text" class="form-control" id="cc" name="cc">
+                                </div>
+                                <div class="mb-3 row">
+                                    <div class="col-sm-9 offset-sm-0">
+                                        <button type="submit" class="btn btn-primary">Cetak</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 `;
             }
 

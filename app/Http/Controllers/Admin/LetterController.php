@@ -62,6 +62,32 @@ class LetterController extends Controller
         return view('pages.admin.letter.print-daftar', compact('data'));
     }
 
+    public function printPemblokiran(Request $request)
+    {
+        $data = $request->all();
+        $formattedDate = date('d F Y', strtotime($data['letter_date']));
+        $data['formatted_date'] = $formattedDate;
+
+        return view('pages.admin.letter.print-blokir', compact('data'));
+    }
+    // public function printPemblokiran(Request $request)
+    // {
+    //     $data = $request->all();
+
+    //     // Proses data kendaraan dari textarea menjadi array key-value
+    //     $vehicleDetails = explode("\n", $request->input('vehicle_details'));
+    //     $vehicleDetailsArray = [];
+    //     foreach ($vehicleDetails as $detail) {
+    //         $parts = explode(":", $detail, 2);
+    //         if (count($parts) == 2) {
+    //             $vehicleDetailsArray[] = ['key' => trim($parts[0]), 'value' => trim($parts[1])];
+    //         }
+    //     }
+    //     $data['vehicle_details'] = $vehicleDetailsArray;
+
+    //     return view('pages.admin.letter.print-blokir', compact('data'));
+    // }
+
 
     public function showLetter($id)
     {
