@@ -70,6 +70,63 @@ class LetterController extends Controller
 
         return view('pages.admin.letter.print-blokir', compact('data'));
     }
+
+    // app/Http/Controllers/LetterController.php
+
+    // app/Http/Controllers/LetterController.php
+
+    public function printJaminan(Request $request)
+    {
+        $data = $request->all();
+        $data['shm_area_text'] = $this->numberToWords($data['shm_area']); // Convert area to text
+        return view('pages.admin.letter.print-jaminan', $data);
+    }
+
+    protected function numberToWords($number)
+    {
+        $units = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
+        $words = '';
+        
+        if ($number == 0) {
+            return 'nol';
+        }
+        
+        if ($number < 10) {
+            return $units[$number];
+        }
+
+        if ($number < 100) {
+            if ($number < 20) {
+                return $this->numberToWords($number - 10) . ' belas';
+            }
+            return $units[intval($number / 10)] . ' puluh ' . $units[$number % 10];
+        }
+
+        if ($number < 1000) {
+            if ($number < 200) {
+                return 'seratus ' . $this->numberToWords($number - 100);
+            }
+            return $units[intval($number / 100)] . ' ratus ' . $this->numberToWords($number % 100);
+        }
+
+        if ($number < 10000) {
+            if ($number < 2000) {
+                return 'seribu ' . $this->numberToWords($number - 1000);
+            }
+            return $units[intval($number / 1000)] . ' ribu ' . $this->numberToWords($number % 1000);
+        }
+
+        return $words;
+    }
+
+    public function printSewa(Request $request)
+    {
+        $data = $request->all();
+        return view('pages.admin.letter.print-sewa', compact('data'));
+    }
+
+
+
     // public function printPemblokiran(Request $request)
     // {
     //     $data = $request->all();

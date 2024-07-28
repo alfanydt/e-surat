@@ -63,6 +63,8 @@ Route::prefix('admin')
     Route::post('letter/print-lembur', [LetterController::class, 'printLembur'])->name('letter.printLembur');
     Route::post('letter/print-daftar', [LetterController::class, 'printDaftar'])->name('letter.printDaftar');
     Route::post('letter/print-blokir', [LetterController::class, 'printPemblokiran'])->name('letter.printPemblokiran');
+    Route::post('letter/print-jaminan',[LetterController::class, 'printJaminan'])->name('letter.printJaminan');
+    Route::post('letter/print-sewa', [LetterController::class, 'printSewa'])->name('letter.printSewa');
 
     Route::get('print/surat-masuk', [PrintController::class, 'index'])->name('print-surat-masuk');
     Route::get('print/surat-keluar', [PrintController::class, 'outgoing'])->name('print-surat-keluar');
