@@ -9,6 +9,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Department;
 use App\Models\Letter;
 use App\Models\Sender;
+use App\Models\Lembur;
 // use App\Traits\PDF;
 use Carbon\Carbon;
 
@@ -49,9 +50,46 @@ class LetterController extends Controller
 
     public function printLembur(Request $request)
     {
-        $data = $request->all();
-        return view('pages.admin.letter.print-lembur', compact('data'));
+       // Validasi data
+       $request->validate([
+        'letter_date' => 'required|date',
+        'recipient' => 'required|string',
+        'address' => 'required|string',
+        'sender_name' => 'required|string',
+        'sender_position' => 'required|string',
+        'overtime_reason' => 'required|string',
+        'employee_details' => 'required|string',
+        'approval1' => 'required|string',
+        'approval1_position' => 'required|string',
+        'approval2' => 'required|string',
+        'approval2_position' => 'required|string',
+        'approval3' => 'required|string',
+        'approval3_position' => 'required|string',
+    ]);
+
+    // Menyimpan data ke database
+    $lembur = Lembur::create([
+        'letter_date' => $request->letter_date,
+        'recipient' => $request->recipient,
+        'address' => $request->address,
+        'sender_name' => $request->sender_name,
+        'sender_position' => $request->sender_position,
+        'overtime_reason' => $request->overtime_reason,
+        'employee_details' => $request->employee_details,
+        'approval1' => $request->approval1,
+        'approval1_position' => $request->approval1_position,
+        'approval2' => $request->approval2,
+        'approval2_position' => $request->approval2_position,
+        'approval3' => $request->approval3,
+        'approval3_position' => $request->approval3_position,
+    ]);
+
+    // Ambil data untuk ditampilkan di halaman preview
+    $data = $lembur->toArray();
+
+    return view('pages.admin.letter.print-lembur', compact('data'));
     }
+
 
     public function printDaftar(Request $request)
     {
