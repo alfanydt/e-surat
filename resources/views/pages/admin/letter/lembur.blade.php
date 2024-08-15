@@ -328,10 +328,6 @@
                                     <textarea class="form-control" id="vehicle_details" name="vehicle_details" rows="3" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="blocking_reason">Alasan Pemblokiran</label>
-                                    <textarea class="form-control" id="blocking_reason" name="blocking_reason" rows="3" required></textarea>
-                                </div>
-                                <div class="form-group">
                                     <label for="cc">Tembusan</label>
                                     <input type="text" class="form-control" id="cc" name="cc">
                                 </div>

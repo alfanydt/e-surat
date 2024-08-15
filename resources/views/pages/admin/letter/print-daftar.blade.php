@@ -8,6 +8,7 @@
         body {
             font-family: 'Times New Roman', Times, serif;
             margin: 40px;
+            font-size: 12px;
         }
         .header, .footer {
             width: 100%;
@@ -29,10 +30,26 @@
         }
         .line-space-15 {
             line-height: 1.5;
+            text-align: left;
+            margin: 0;
         }
         .signature {
-            margin-top: 40px;
-            text-align: right;
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            /* align-items: center; */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            height: 200px;
+        }
+        .signature p {
+            /* text-align: right; */
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        .signature p span {
+            text-decoration: underline;
         }
         .text-right {
             text-align: right;
@@ -40,6 +57,7 @@
         .indent {
             text-indent: 50px;
         }
+        
         @media print {
             a[href]:after, .header, .footer {
                 content: none !important;
@@ -49,29 +67,32 @@
                 margin: 0;
             }
             body {
-                margin: 1.6cm;
+                margin: 3cm;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <p>Nomor: {{ $data['letter_no'] }}</p>
+<p style="text-align: right;">
+    Magetan, {{ \Carbon\Carbon::parse($data['letter_date'])->formatLocalized('%d %B %Y') }}
+</p>
+<div class="container">
+    <div class="content">
+        <p>Nomor  : {{ $data['letter_no'] }}</p>
         <p>Perihal: {{ $data['regarding'] }}</p>
-        <p>Lamp: {{ $data['attachment'] }}</p>
-    </div>
-    
+        <p>Lamp   : {{ $data['attachment'] }}</p>
+      </div><br>
     <div class="content">
         <p>Kepada Yth :</p>
         <p>Saudara/i {{ $data['recipient_name'] }}</p>
-        <p>Di {{ $data['recipient_address'] }}</p>
+        <p>Di {{ $data['recipient_address'] }}</p><br>
         
-        <p>Yang bertanda tangan dibawah ini :</p>
+        <p>Yang bertanda tangan dibawah ini :</p><br>
         <blockquote class="line-space-15">
-            <p>Nama: {{ $data['sender_name'] }}<br>
-            Jabatan: {{ $data['sender_position'] }}<br>
-            Alamat: {{ $data['sender_address'] }}</p>
-        </blockquote>
+            <p>Nama: {{ $data['sender_name'] }}</p>
+            <p>Jabatan: {{ $data['sender_position'] }}</p>
+            <p>Alamat: {{ $data['sender_address'] }}</p>
+        </blockquote><br>
 
         <p>Dengan ini kami beritahukan bahwa agunan kredit Saudara/i di PT. BPR EKADHARMA BHINARAHARJA sebagai berikut:</p>
         <blockquote>
@@ -82,15 +103,13 @@
         <p>Demikian pemberitahuan ini disampaikan untuk menjadi perhatian Saudara/i.</p>
     </div>
 
-    <div class="footer">
-        <p>PT. BPR “EKADHARMA BHINARAHARJA”</p>
-        <p>Kawedanan – Magetan</p>
-        <p>Direksi</p>
-        
-        <div class="signature">
-            <p>{{ $data['sender_name'] }}<br>
-            Direktur Utama</p>
-        </div>
+    <div class="signature">
+    <p>PT. BPR EKADHARMA BHINARAHARJA<br>
+                Kawedanan - Magetan<br>
+                Direksi<br><br><br>
+                <span>MUHAMMAD NUF BERNADIN, SE</span><br>
+                Direktur Utama
+                </p>
     </div>
     
     <div class="tembusan">
