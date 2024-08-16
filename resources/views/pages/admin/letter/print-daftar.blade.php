@@ -59,6 +59,10 @@
         }
         
         @media print {
+            @page {
+                size: A4; /* Mengatur ukuran kertas menjadi A4 */
+                margin: 2cm; /* Mengatur margin */
+            }
             a[href]:after, .header, .footer {
                 content: none !important;
                 display: none !important;

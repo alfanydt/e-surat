@@ -10,6 +10,8 @@ use App\Models\Department;
 use App\Models\Letter;
 use App\Models\Sender;
 use App\Models\Lembur;
+use App\Models\Daftar;
+use App\Models\Blokir;
 // use App\Traits\PDF;
 use Carbon\Carbon;
 
@@ -90,24 +92,92 @@ class LetterController extends Controller
     return view('pages.admin.letter.print-lembur', compact('data'));
     }
 
-
     public function printDaftar(Request $request)
     {
-        $data = $request->all();
-        $formattedDate = date('d F Y', strtotime($data['letter_date']));
-        $data['formatted_date'] = $formattedDate;
+        // Validasi data
+        $request->validate([
+            'letter_no' => 'required|string',
+            'letter_date' => 'required|date',
+            'location' => 'required|string',
+            'regarding' => 'required|string',
+            'attachment' => 'nullable|string',
+            'recipient_name' => 'required|string',
+            'recipient_address' => 'required|string',
+            'sender_name' => 'required|string',
+            'sender_position' => 'required|string',
+            'sender_address' => 'required|string',
+            'collateral_description' => 'required|string',
+            'auction_date' => 'required|date',
+            'cc' => 'nullable|string',
+        ]);
+
+        // Menyimpan data ke database
+        $daftar = Daftar::create([
+            'letter_no' => $request->letter_no,
+            'letter_date' => $request->letter_date,
+            'location' => $request->location,
+            'regarding' => $request->regarding,
+            'attachment' => $request->attachment,
+            'recipient_name' => $request->recipient_name,
+            'recipient_address' => $request->recipient_address,
+            'sender_name' => $request->sender_name,
+            'sender_position' => $request->sender_position,
+            'sender_address' => $request->sender_address,
+            'collateral_description' => $request->collateral_description,
+            'auction_date' => $request->auction_date,
+            'cc' => $request->cc,
+        ]);
+
+        // Ambil data untuk ditampilkan di halaman preview
+        $data = $daftar->toArray();
 
         return view('pages.admin.letter.print-daftar', compact('data'));
     }
 
+    // public function printDaftar(Request $request)
+    // {
+    //     $data = $request->all();
+    //     $formattedDate = date('d F Y', strtotime($data['letter_date']));
+    //     $data['formatted_date'] = $formattedDate;
+
+    //     return view('pages.admin.letter.print-daftar', compact('data'));
+    // }
+
+
     public function printPemblokiran(Request $request)
     {
-        $data = $request->all();
-        $formattedDate = date('d F Y', strtotime($data['letter_date']));
-        $data['formatted_date'] = $formattedDate;
+        // Validasi data
+        $request->validate([
+            'letter_no' => 'required|string',
+            'letter_date' => 'required|date',
+            'lamp' => 'required|string',
+            'regarding' => 'required|string',
+            'recipient_name' => 'required|string',
+            'recipient_address' => 'required|string',
+            'sender_name' => 'required|string',
+            'sender_position' => 'required|string',
+            'sender_address' => 'required|string',
+            'vehicle_details' => 'required|string',
+            'cc' => 'nullable|string',
+        ]);
+
+        // Menyimpan data ke database
+        $blokir = Blokir::create($request->all());
+
+        // Ambil data untuk ditampilkan di halaman preview
+        $data = $blokir->toArray();
 
         return view('pages.admin.letter.print-blokir', compact('data'));
     }
+
+    // public function printPemblokiran(Request $request)
+    // {
+    //     $data = $request->all();
+    //     $formattedDate = date('d F Y', strtotime($data['letter_date']));
+    //     $data['formatted_date'] = $formattedDate;
+
+    //     return view('pages.admin.letter.print-blokir', compact('data'));
+    // }
 
     // app/Http/Controllers/LetterController.php
 
