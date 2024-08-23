@@ -12,7 +12,9 @@ use App\Models\Sender;
 use App\Models\Lembur;
 use App\Models\Daftar;
 use App\Models\Blokir;
+use App\Models\Jaminan;
 // use App\Traits\PDF;
+use App\Helpers\terbilang;
 use Carbon\Carbon;
 
 use Yajra\DataTables\Facades\DataTables;
@@ -184,47 +186,92 @@ class LetterController extends Controller
     // app/Http/Controllers/LetterController.php
 
     public function printJaminan(Request $request)
-    {
-        $data = $request->all();
-        $data['shm_area_text'] = $this->numberToWords($data['shm_area']); // Convert area to text
-        return view('pages.admin.letter.print-jaminan', $data);
-    }
+{
+    // Validasi data
+    $request->validate([
+        'letter_no' => 'required|string',
+        'letter_date' => 'required|date',
+        'sender_name' => 'required|string',
+        'sender_position' => 'required|string',
+        'sender_address' => 'required|string',
+        'shm_number' => 'required|string',
+        'shm_area' => 'required|string',
+        'shm_location' => 'required|string',
+        'shm_owner' => 'required|string',
+    ]);
 
-    protected function numberToWords($number)
-    {
-        $units = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
-        $words = '';
+    // Simpan data ke database
+    Jaminan::create($request->all());
+
+    // Ambil data untuk ditampilkan di halaman preview
+    $data = $request->all();
+
+    return view('pages.admin.letter.print-jaminan', compact('data'));
+}
+
+    // protected function numberToWords($number)
+    // {
+    //     $units = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
+    //     $words = '';
         
-        if ($number == 0) {
-            return 'nol';
-        }
+    //     if ($number == 0) {
+    //         return 'nol';
+    //     }
         
-        if ($number < 10) {
-            return $units[$number];
-        }
+    //     if ($number < 10) {
+    //         return $units[$number];
+    //     }
 
-        if ($number < 100) {
-            if ($number < 20) {
-                return $this->numberToWords($number - 10) . ' belas';
-            }
-            return $units[intval($number / 10)] . ' puluh ' . $units[$number % 10];
-        }
+    //     if ($number < 100) {
+    //         if ($number < 20) {
+    //             return $this->numberToWords($number - 10) . ' belas';
+    //         }
+    //         return $units[intval($number / 10)] . ' puluh ' . $units[$number % 10];
+    //     }
 
-        if ($number < 1000) {
-            if ($number < 200) {
-                return 'seratus ' . $this->numberToWords($number - 100);
-            }
-            return $units[intval($number / 100)] . ' ratus ' . $this->numberToWords($number % 100);
-        }
+    //     if ($number < 1000) {
+    //         if ($number < 200) {
+    //             return 'seratus ' . $this->numberToWords($number - 100);
+    //         }
+    //         return $units[intval($number / 100)] . ' ratus ' . $this->numberToWords($number % 100);
+    //     }
 
-        if ($number < 10000) {
-            if ($number < 2000) {
-                return 'seribu ' . $this->numberToWords($number - 1000);
-            }
-            return $units[intval($number / 1000)] . ' ribu ' . $this->numberToWords($number % 1000);
-        }
+    //     if ($number < 10000) {
+    //         if ($number < 2000) {
+    //             return 'seribu ' . $this->numberToWords($number - 1000);
+    //         }
+    //         return $units[intval($number / 1000)] . ' ribu ' . $this->numberToWords($number % 1000);
+    //     }
 
-        return $words;
+    //     return $words;
+    // }
+    function terbilang($angka) {
+        $angka = (int) $angka;
+        $bilangan = array(
+            '0' => '',
+            '1' => 'Satu',
+            '2' => 'Dua',
+            '3' => 'Tiga',
+            '4' => 'Empat',
+            '5' => 'Lima',
+            '6' => 'Enam',
+            '7' => 'Tujuh',
+            '8' => 'Delapan',
+            '9' => 'Sembilan',
+        );
+        $result = '';
+        if ($angka < 10) {
+            $result = $bilangan[$angka];
+        } elseif ($angka < 20) {
+            $result = $bilangan[$angka - 10] . ' Belas';
+        } elseif ($angka < 100) {
+            $result = $bilangan[(int) ($angka / 10)] . ' Puluh ' . $bilangan[$angka % 10];
+        } elseif ($angka < 1000) {
+            $result = $bilangan[(int) ($angka / 100)] . ' Ratus ' . terbilang($angka % 100);
+        } elseif ($angka < 1000000) {
+            $result = $bilangan[(int) ($angka / 1000)] . ' Ribu ' . terbilang($angka % 1000);
+        }
+        return $result;
     }
 
     public function printSewa(Request $request)
