@@ -13,6 +13,7 @@ use App\Models\Lembur;
 use App\Models\Daftar;
 use App\Models\Blokir;
 use App\Models\Jaminan;
+use App\Models\Sewa;
 // use App\Traits\PDF;
 use App\Helpers\terbilang;
 use Carbon\Carbon;
@@ -274,11 +275,46 @@ class LetterController extends Controller
         return $result;
     }
 
+    // public function printSewa(Request $request)
+    // {
+    //     $data = $request->all();
+    //     return view('pages.admin.letter.print-sewa', compact('data'));
+    // }
     public function printSewa(Request $request)
-    {
-        $data = $request->all();
-        return view('pages.admin.letter.print-sewa', compact('data'));
-    }
+{
+    // Validasi data
+    $request->validate([
+        'letter_no' => 'required|string',
+        'letter_date' => 'required|date',
+        'first_party_name' => 'required|string',
+        'first_party_address' => 'required|string',
+        'first_party_nik' => 'required|string',
+        'second_party_name' => 'required|string',
+        'second_party_address' => 'required|string',
+        'second_party_position' => 'required|string',
+        'second_party_nik' => 'required|string',
+        'vehicle_type' => 'required|string',
+        'vehicle_brand' => 'required|string',
+        'vehicle_model' => 'required|string',
+        'vehicle_year' => 'required|string',
+        'vehicle_color' => 'required|string',
+        'vehicle_engine_size' => 'required|string',
+        'vehicle_frame_no' => 'required|string',
+        'vehicle_engine_no' => 'required|string',
+        'vehicle_bpkb_no' => 'required|string',
+        'vehicle_plate_no' => 'required|string',
+        'vehicle_owner' => 'required|string',
+        'vehicle_owner_address' => 'required|string',
+    ]);
+
+    // Simpan data ke database
+    Sewa::create($request->all());
+
+    // Ambil data untuk ditampilkan di halaman preview
+    $data = $request->all();
+
+    return view('pages.admin.letter.print-sewa', compact('data'));
+}
 
 
 
