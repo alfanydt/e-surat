@@ -194,9 +194,14 @@
                                     <label for="approval3_position">Jabatan Mengetahui</label>
                                     <input type="text" class="form-control" id="approval3_position" name="approval3_position" required>
                                 </div>
-                                <div class="mb-3 row">
-                                    <div class="col-sm-9 offset-sm-0">
-                                        <button type="submit" class="btn btn-primary">Cetak</button>
+                                <div class=""d-flex justify-content-between mt-4">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-save"></i> Save
+                                    </button>
+                                
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-print"></i> Cetak
+                                    </button>
                                     </div>
                                 </div>
                             </form>
@@ -262,9 +267,14 @@
                                     <label for="cc">Tembusan</label>
                                     <input type="text" class="form-control" id="cc" name="cc">
                                 </div>
-                                <div class="mb-3 row">
-                                    <div class="col-sm-9 offset-sm-0">
-                                        <button type="submit" class="btn btn-primary">Cetak</button>
+                                <div class=""d-flex justify-content-between mt-4">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-save"></i> Save
+                                    </button>
+                                
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-print"></i> Cetak
+                                    </button>
                                     </div>
                                 </div>
                             </form>
@@ -331,9 +341,14 @@
                                     <label for="cc">Tembusan</label>
                                     <input type="text" class="form-control" id="cc" name="cc">
                                 </div>
-                                <div class="mb-3 row">
-                                    <div class="col-sm-9 offset-sm-0">
-                                        <button type="submit" class="btn btn-primary">Cetak</button>
+                                <div class=""d-flex justify-content-between mt-4">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-save"></i> Save
+                                    </button>
+                                
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-print"></i> Cetak
+                                    </button>
                                     </div>
                                 </div>
                             </form>
@@ -385,10 +400,15 @@
                                 <label for="shm_owner">Pemilik Sertifikat Hak Milik</label>
                                 <input type="text" class="form-control" id="shm_owner" name="shm_owner" required>
                             </div>
-                            <div class="mb-3 row">
-                                <div class="col-sm-9 offset-sm-0">
-                                    <button type="submit" class="btn btn-primary">Cetak</button>
-                                </div>
+                            <div class=""d-flex justify-content-between mt-4">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-save"></i> Save
+                                    </button>
+                                
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-print"></i> Cetak
+                                    </button>
+                                    </div>
                             </div>
                         </form>
                     </div>
@@ -486,10 +506,15 @@
                                 <label for="vehicle_owner_address">Alamat Pemilik Kendaraan</label>
                                 <input type="text" class="form-control" id="vehicle_owner_address" name="vehicle_owner_address" required>
                             </div>
-                            <div class="mb-3 row">
-                                <div class="col-sm-9 offset-sm-0">
-                                    <button type="submit" class="btn btn-primary">Cetak</button>
-                                </div>
+                            <div class=""d-flex justify-content-between mt-4">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-save"></i> Save
+                                    </button>
+                                
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-print"></i> Cetak
+                                    </button>
+                                    </div>
                             </div>
                         </form>
                     </div>

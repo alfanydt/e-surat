@@ -9,7 +9,7 @@
             font-family: 'Times New Roman', Times, serif;
             margin: 0;
             padding: 0;
-            font-size: 12px;
+            font-size: 12pt;
         }
         .container {
             width: 80%;
@@ -21,18 +21,18 @@
             margin-bottom: 20px;
         }
         .header h1 {
-            font-size: 14px;
+            font-size: 14pt;
             margin: 0;
         }
         .header p {
-            font-size: 12px;
+            font-size: 12pt;
             margin: 0;
         }
         .content {
             margin-top: 20px;
         }
         .content p {
-            font-size: 12px;
+            font-size: 12pt;
             margin: 5px 0;
             text-align: justify;
             padding: 2px;
@@ -44,7 +44,7 @@
         .signature {
             margin-top: 50px;
             text-align: center;
-            font-size: 12px;
+            font-size: 12pt;
             /* align-items: center; */
             display: flex;
             flex-direction: column;

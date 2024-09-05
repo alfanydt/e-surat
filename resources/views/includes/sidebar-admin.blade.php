@@ -41,6 +41,14 @@
                 <div class="nav-link-icon"><i data-feather="printer"></i></div>
                 Cetak Surat
             </a>
+            <a class="nav-link {{ (request()->is('admin/letter/arsip')) ? 'active' : '' }}" href="{{ route('arsip') }}">
+                <div class="nav-link-icon"><i data-feather="archive"></i></div>
+                Arsip Lembur
+            </a>
+            <a class="nav-link {{ (request()->is('admin/letter/arsip-blokir')) ? 'active' : '' }}" href="{{ route('arsip-blokir') }}">
+                <div class="nav-link-icon"><i data-feather="archive"></i></div>
+                Arsip Blokir
+            </a>
             <a class="nav-link {{ (request()->is('admin/letter/surat-masuk')) ? 'active' : '' }}" href="{{ route('surat-masuk') }}">
                 <div class="nav-link-icon"><i data-feather="arrow-right"></i></div>
                 Surat Masuk

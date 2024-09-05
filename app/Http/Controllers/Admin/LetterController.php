@@ -316,6 +316,22 @@ class LetterController extends Controller
     return view('pages.admin.letter.print-sewa', compact('data'));
 }
 
+public function arsip()
+{
+    $lembur = Lembur::all();
+    return view('pages.admin.letter.arsip', compact('lembur')); // Arahkan ke blade arsip.blade.php
+}
+public function printArsip($id)
+{
+    $surat = Surat::findOrFail($id); // Ambil surat dari database berdasarkan ID
+    return view('pages.admin.letter.print-arsip', compact('data')); // Arahkan ke view cetak arsip
+}
+
+public function arsipBlokir()
+{
+    $blokir = Blokir::all();
+    return view('pages.admin.letter.arsip-blokir', compact('blokir')); 
+}
 
 
     // public function printPemblokiran(Request $request)
@@ -392,7 +408,7 @@ class LetterController extends Controller
         return redirect()
                     ->route($redirect)
                     ->with('success', 'Sukses! 1 Data Berhasil Disimpan');
-        
+    } 
         // $validated = $request->validate([
         //     'letter_date' => 'required|date',
         //     'to' => 'required|string|max:255',
@@ -422,7 +438,10 @@ class LetterController extends Controller
     
         // return redirect()->route('letter.preview', $letter->id);
         
-    }
+        
+        
+        
+        
 
     public function incoming_mail()
     {

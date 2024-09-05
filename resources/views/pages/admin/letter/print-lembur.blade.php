@@ -7,8 +7,9 @@
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
+            font-size: 12px;
             line-height: 1.6;
-            margin: 40px;
+            margin: 20mm 20mm 20mm 20mm;
         }
         .underline {
             text-decoration: underline;
@@ -49,21 +50,21 @@
             margin-top: 40px;
         } */
         .signature-container {
-    display: flex;
-    justify-content: space-between; /* Mengatur jarak antara signature-left dan signature-right */
-    flex-wrap: wrap; /* Agar dapat memperlakukan signature-center sebagai baris baru */
-}
+            display: flex;
+            justify-content: space-between; /* Mengatur jarak antara signature-left dan signature-right */
+            flex-wrap: wrap; /* Agar dapat memperlakukan signature-center sebagai baris baru */
+        }
 
-.signature-left,
-.signature-right {
-    flex-basis: 45%; /* Lebar masing-masing signature-left dan signature-right */
-    text-align: center;
-}
+        .signature-left,
+        .signature-right {
+            flex-basis: 45%; /* Lebar masing-masing signature-left dan signature-right */
+            text-align: center;
+        }
 
-.signature-center {
-    flex-basis: 100%; /* Mengisi lebar signature-center agar memenuhi satu baris */
-    text-align: center; /* Memusatkan teks pada signature-center */
-}
+        .signature-center {
+            flex-basis: 100%; /* Mengisi lebar signature-center agar memenuhi satu baris */
+            text-align: center; /* Memusatkan teks pada signature-center */
+        }
         .text-right {
             text-align: right;
         }
@@ -95,7 +96,7 @@
 <body>
     <!-- <p class="text-align: right;">{{ $data['letter_date'] }}</p> -->
     <p style="text-align: right;">
-        Magetan, {{ \Carbon\Carbon::parse($data['letter_date'])->format('j F Y') }}
+        Magetan, {{ \Carbon\Carbon::parse($data['letter_date'])->format('j M Y') }}
     </p>
 
     <p>Kepada Yth :<br>

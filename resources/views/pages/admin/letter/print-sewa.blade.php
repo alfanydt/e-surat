@@ -25,23 +25,23 @@
 
         .header h1 {
             margin-bottom: 5px; /* Reduced margin-bottom for title */
-            font-size: 18px; /* Adjusted font-size for title */
+            font-size: 18pt; /* Adjusted font-size for title */
         }
         .content h3 {
             text-decoration: underline;
-            font-size: 12px;
+            font-size: 14pt;
             margin-bottom: -10px;
         }
         .content p {
             margin-bottom: 10px; /* Reduced margin-bottom for paragraphs */
             text-align: justify; 
-            font-size: 12px; /* Reduced font-size */
+            font-size: 14pt; /* Reduced font-size */
         }
 
         .content ol {
             margin-left: 20px; 
             list-style-type: decimal; 
-            font-size: 12px; /* Reduced font-size */
+            font-size: 14pt; /* Reduced font-size */
         }
 
         .footer {
@@ -60,7 +60,7 @@
             width: 45%;
             margin-top: 50px;
             text-align: center;
-            font-size: 12px;
+            font-size: 14pt;
             /* align-items: center; */
             display: flex;
             flex-direction: column;
@@ -70,7 +70,7 @@
 
         .signature-left, .signature-right {
             text-align: center; /* Menyelaraskan teks ke tengah dalam setiap kolom */
-            font-size: 12px;
+            font-size: 14pt;
             flex: 1; /* Membuat kolom kiri dan kanan memiliki lebar yang sama */
         }
         .signature-left {
@@ -98,7 +98,7 @@
 
         .signature p {
             margin: 3px 0; /* Reduced margin for signature lines */
-            font-size: 12px; /* Reduced font-size */
+            font-size: 14pt; /* Reduced font-size */
         }
         @media print {
             a[href]:after, .header, {
@@ -111,7 +111,18 @@
 
             }
             body {
-                /* margin: 2cm 2cm 2cm 2cm; */
+                font-size: 12pt; /* Set the font size to 12pt */
+            }
+
+            .header h1, 
+            .content h3, 
+            .content p, 
+            .content ol, 
+            .signature, 
+            .signature-left, 
+            .signature-right, 
+            .signature p {
+                font-size: 12pt; /* Ensure all text elements print in 12pt */
             }
         }
     </style>
