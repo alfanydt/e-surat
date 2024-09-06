@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Arsip Lembur
+    Arsip Sewa
 @endsection
 
 @section('container')
@@ -13,7 +13,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="archive"></i></div>
-                            Arsip Surat Lembur
+                            Arsip Surat Sewa
                         </h1>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
             <div class="col-lg-12">
                 <div class="card card-header-actions mb-4">
                     <div class="card-header">
-                        List Arsip Surat Lembur
+                        List Arsip Surat Sewa
                     </div>
                     <div class="card-body">
                         {{-- Alert --}}
@@ -53,19 +53,21 @@
                             <thead>
                                 <tr>
                                     <th width="10">No.</th>
+                                    <th>No. Surat</th>
                                     <th>Tanggal Surat</th>
-                                    <th>Pengirim</th>
+                                    <!-- <th>Perihal</th> -->
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($lembur as $item)
+                                @foreach ($sewa as $sewa)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->letter_date }}</td>
-                                    <td>{{ $item->sender_name }}</td>
+                                    <td>{{ $sewa->letter_no }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($sewa->letter_date)->format('d M Y') }}</td>
+                                    <!-- <td>{{ $sewa->regarding }}</td> -->
                                     <td>
-                                        <a href="{{ route('print-arsip-surat', $item->id) }}" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('print-arsip-surat', $sewa->id) }}" class="btn btn-sm btn-primary">
                                             Cetak
                                         </a>
                                     </td>

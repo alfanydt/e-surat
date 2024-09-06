@@ -41,14 +41,38 @@
                 <div class="nav-link-icon"><i data-feather="printer"></i></div>
                 Cetak Surat
             </a>
-            <a class="nav-link {{ (request()->is('admin/letter/arsip')) ? 'active' : '' }}" href="{{ route('arsip') }}">
-                <div class="nav-link-icon"><i data-feather="archive"></i></div>
-                Arsip Lembur
+            <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#" data-bs-toggle="collapse" data-bs-target="#arsipMenu" aria-expanded="false" aria-controls="arsipMenu">
+                <div class="d-flex align-items-center">
+                    <div class="nav-link-icon"><i data-feather="archive"></i></div>
+                    <span class="ms-2">Arsip</span> <!-- Memberi margin ke kanan agar tidak mepet -->
+                </div>
+                <div class="sb-sidenav-collapse-arrow ms-auto"><i class="fas fa-angle-down"></i></div> <!-- Memberi margin auto untuk menjauhkan panah dari tulisan -->
             </a>
-            <a class="nav-link {{ (request()->is('admin/letter/arsip-blokir')) ? 'active' : '' }}" href="{{ route('arsip-blokir') }}">
-                <div class="nav-link-icon"><i data-feather="archive"></i></div>
-                Arsip Blokir
-            </a>
+            <div class="collapse" id="arsipMenu" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav ps-4"> <!-- Menambahkan padding-left (ps-4) agar submenu menjotek ke dalam -->
+                    <a class="nav-link {{ (request()->is('admin/letter/arsip-blokir')) ? 'active' : '' }}" href="{{ route('arsip-blokir') }}">
+                        <div class="nav-link-icon"><i data-feather="shield"></i></div> <!-- Ikon blokir -->
+                        Arsip Blokir
+                    </a>
+                    <a class="nav-link {{ (request()->is('admin/letter/arsip-daftar')) ? 'active' : '' }}" href="{{ route('arsip-daftar') }}">
+                        <div class="nav-link-icon"><i data-feather="file-text"></i></div> <!-- Ikon daftar -->
+                        Arsip Daftar
+                    </a>
+                    <a class="nav-link {{ (request()->is('admin/letter/arsip-jaminan')) ? 'active' : '' }}" href="{{ route('arsip-jaminan') }}">
+                        <div class="nav-link-icon"><i data-feather="lock"></i></div> <!-- Ikon jaminan -->
+                        Arsip Jaminan
+                    </a>
+                    <a class="nav-link {{ (request()->is('admin/letter/arsip-sewa')) ? 'active' : '' }}" href="{{ route('arsip-sewa') }}">
+                        <div class="nav-link-icon"><i data-feather="home"></i></div> <!-- Ikon sewa -->
+                        Arsip Sewa
+                    </a>
+                    <a class="nav-link {{ (request()->is('admin/letter/arsip')) ? 'active' : '' }}" href="{{ route('arsip') }}">
+                        <div class="nav-link-icon"><i data-feather="clock"></i></div> <!-- Ikon lembur -->
+                        Arsip Lembur
+                    </a>
+                </nav>
+            </div>
+
             <a class="nav-link {{ (request()->is('admin/letter/surat-masuk')) ? 'active' : '' }}" href="{{ route('surat-masuk') }}">
                 <div class="nav-link-icon"><i data-feather="arrow-right"></i></div>
                 Surat Masuk

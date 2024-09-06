@@ -323,14 +323,43 @@ public function arsip()
 }
 public function printArsip($id)
 {
-    $surat = Surat::findOrFail($id); // Ambil surat dari database berdasarkan ID
-    return view('pages.admin.letter.print-arsip', compact('data')); // Arahkan ke view cetak arsip
+    $lembur = Lembur::find($id); // Jangan gunakan findOrFail dulu untuk debugging
+
+    if (!$lembur) {
+        // Kembalikan pesan error jika tidak ditemukan
+        return redirect()->back()->withErrors('Data surat tidak ditemukan');
+    }
+
+    // Coba gunakan dd() untuk melihat isi dari $lembur
+    // dd($lembur);
+
+    return view('pages.admin.letter.arsip', compact('lembur'));
 }
+
+
 
 public function arsipBlokir()
 {
     $blokir = Blokir::all();
     return view('pages.admin.letter.arsip-blokir', compact('blokir')); 
+}
+
+public function arsipDaftar()
+{
+    $daftar = Daftar::all();
+    return view('pages.admin.letter.arsip-daftar', compact('daftar')); 
+}
+
+public function arsipJaminan()
+{
+    $jaminan = Jaminan::all();
+    return view('pages.admin.letter.arsip-jaminan', compact('jaminan')); 
+}
+
+public function arsipSewa()
+{
+    $sewa = Sewa::all();
+    return view('pages.admin.letter.arsip-sewa', compact('sewa')); 
 }
 
 

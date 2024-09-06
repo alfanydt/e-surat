@@ -69,6 +69,9 @@ Route::prefix('admin')
     Route::get('letter/arsip', [LetterController::class, 'arsip'])->name('arsip');
     Route::get('letter/arsip/print/{id}', [LetterController::class, 'printArsip'])->name('print-arsip-surat');
     Route::get('letter/arsip-blokir', [LetterController::class, 'arsipBlokir'])->name('arsip-blokir');
+    Route::get('letter/arsip-daftar', [LetterController::class, 'arsipDaftar'])->name('arsip-daftar');
+    Route::get('letter/arsip-jaminan', [LetterController::class, 'arsipJaminan'])->name('arsip-jaminan');
+    Route::get('letter/arsip-sewa', [LetterController::class, 'arsipSewa'])->name('arsip-sewa');
 
     Route::get('print/surat-masuk', [PrintController::class, 'index'])->name('print-surat-masuk');
     Route::get('print/surat-keluar', [PrintController::class, 'outgoing'])->name('print-surat-keluar');
