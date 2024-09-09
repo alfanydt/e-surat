@@ -20,7 +20,7 @@
             </div>
         </div>
     </header>
-    
+
     <!-- Main page content-->
     <div class="container-xl px-4 mt-4">
         <div class="row">
@@ -52,7 +52,7 @@
                         <table class="table table-striped table-hover table-sm" id="crudTable">
                             <thead>
                                 <tr>
-                                    <th width="10">No.</th>
+                                    <th width="10">No.lalalalal</th>
                                     <th>Tanggal Surat</th>
                                     <th>Pengirim</th>
                                     <th>Aksi</th>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
             </div>
-        </div>           
+        </div>
     </div>
 </main>
 @endsection

@@ -91,6 +91,7 @@ class LetterController extends Controller
 
     // Ambil data untuk ditampilkan di halaman preview
     $data = $lembur->toArray();
+    dd($data);
 
     return view('pages.admin.letter.print-lembur', compact('data'));
     }
@@ -214,11 +215,11 @@ class LetterController extends Controller
     // {
     //     $units = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
     //     $words = '';
-        
+
     //     if ($number == 0) {
     //         return 'nol';
     //     }
-        
+
     //     if ($number < 10) {
     //         return $units[$number];
     //     }
@@ -323,7 +324,7 @@ public function arsip()
 }
 public function printArsip($id)
 {
-    $lembur = Lembur::find($id); // Jangan gunakan findOrFail dulu untuk debugging
+    $lembur = Lembur::findOrFail($id); // Jangan gunakan findOrFail dulu untuk debugging
 
     if (!$lembur) {
         // Kembalikan pesan error jika tidak ditemukan
@@ -331,9 +332,11 @@ public function printArsip($id)
     }
 
     // Coba gunakan dd() untuk melihat isi dari $lembur
-    // dd($lembur);
+    // dd($lembur->toArray());  
+    $data = $lembur->toArray();
 
-    return view('pages.admin.letter.arsip', compact('lembur'));
+    // return view('pages.admin.letter.arsip', compact('lembur'));
+    return view('pages.admin.letter.print-lembur', compact('data'));
 }
 
 
@@ -341,25 +344,25 @@ public function printArsip($id)
 public function arsipBlokir()
 {
     $blokir = Blokir::all();
-    return view('pages.admin.letter.arsip-blokir', compact('blokir')); 
+    return view('pages.admin.letter.arsip-blokir', compact('blokir'));
 }
 
 public function arsipDaftar()
 {
     $daftar = Daftar::all();
-    return view('pages.admin.letter.arsip-daftar', compact('daftar')); 
+    return view('pages.admin.letter.arsip-daftar', compact('daftar'));
 }
 
 public function arsipJaminan()
 {
     $jaminan = Jaminan::all();
-    return view('pages.admin.letter.arsip-jaminan', compact('jaminan')); 
+    return view('pages.admin.letter.arsip-jaminan', compact('jaminan'));
 }
 
 public function arsipSewa()
 {
     $sewa = Sewa::all();
-    return view('pages.admin.letter.arsip-sewa', compact('sewa')); 
+    return view('pages.admin.letter.arsip-sewa', compact('sewa'));
 }
 
 
@@ -437,7 +440,7 @@ public function arsipSewa()
         return redirect()
                     ->route($redirect)
                     ->with('success', 'Sukses! 1 Data Berhasil Disimpan');
-    } 
+    }
         // $validated = $request->validate([
         //     'letter_date' => 'required|date',
         //     'to' => 'required|string|max:255',
@@ -448,12 +451,12 @@ public function arsipSewa()
         //     'approval_position' => 'required|string|max:255',
         //     'file' => 'nullable|file|mimes:pdf|max:2048',
         // ]);
-    
+
         // $filePath = null;
         // if ($request->hasFile('file')) {
         //     $filePath = $request->file('file')->store('letters');
         // }
-    
+
         // $letter = Letter::create([
         //     'letter_date' => $validated['letter_date'],
         //     'to' => $validated['to'],
@@ -464,13 +467,13 @@ public function arsipSewa()
         //     'approval_position' => $validated['approval_position'],
         //     'file' => $filePath,
         // ]);
-    
+
         // return redirect()->route('letter.preview', $letter->id);
-        
-        
-        
-        
-        
+
+
+
+
+
 
     public function incoming_mail()
     {
@@ -613,8 +616,8 @@ public function arsipSewa()
         return redirect()
                     ->route($redirect)
                     ->with('success', 'Sukses! 1 Data Berhasil Diubah');
-        
-        
+
+
     //     $letter = Letter::findOrFail($id);
 
     // $validated = $request->validate([
