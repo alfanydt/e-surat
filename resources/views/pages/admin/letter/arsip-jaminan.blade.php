@@ -67,7 +67,7 @@
                                     <td>{{ \Carbon\Carbon::parse($jaminan->letter_date)->format('d M Y') }}</td>
                                     <td>{{ $jaminan->sender_name }}</td>
                                     <td>
-                                        <a href="{{ route('print-arsip-surat', $jaminan->id) }}" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('print-arsipJaminan-surat', $jaminan->id) }}" class="btn btn-sm btn-primary">
                                             Cetak
                                         </a>
                                     </td>

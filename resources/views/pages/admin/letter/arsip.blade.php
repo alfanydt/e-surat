@@ -59,13 +59,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($lembur as $item)
+                                @foreach ($lembur as $lembur)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->letter_date }}</td>
-                                    <td>{{ $item->sender_name }}</td>
+                                    <td>{{ $lembur->letter_date }}</td>
+                                    <td>{{ $lembur->sender_name }}</td>
                                     <td>
-                                        <a href="{{ route('print-arsip-surat', $item->id) }}" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('print-arsip-surat', $lembur->id) }}" class="btn btn-sm btn-primary">
                                             Cetak
                                         </a>
                                     </td>

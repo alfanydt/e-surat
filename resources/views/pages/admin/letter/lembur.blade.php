@@ -194,10 +194,7 @@
                                     <label for="approval3_position">Jabatan Mengetahui</label>
                                     <input type="text" class="form-control" id="approval3_position" name="approval3_position" required>
                                 </div>
-                                <div class=""d-flex justify-content-between mt-4">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fas fa-save"></i> Save
-                                    </button>
+                            
                                 
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fas fa-print"></i> Cetak

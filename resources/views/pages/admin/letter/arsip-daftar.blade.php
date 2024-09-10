@@ -67,7 +67,7 @@
                                     <td>{{ \Carbon\Carbon::parse($daftar->letter_date)->format('d M Y') }}</td>
                                     <td>{{ $daftar->regarding }}</td>
                                     <td>
-                                        <a href="{{ route('print-arsip-surat', $daftar->id) }}" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('print-arsipDaftar-surat', $daftar->id) }}" class="btn btn-sm btn-primary">
                                             Cetak
                                         </a>
                                     </td>

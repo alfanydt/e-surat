@@ -67,7 +67,7 @@
                                     <td>{{ \Carbon\Carbon::parse($blokir->letter_date)->format('d M Y') }}</td>
                                     <td>{{ $blokir->regarding }}</td>
                                     <td>
-                                        <a href="{{ route('print-arsip-surat', $blokir->id) }}" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('print-arsipBlokir-surat', $blokir->id) }}" class="btn btn-sm btn-primary">
                                             Cetak
                                         </a>
                                     </td>

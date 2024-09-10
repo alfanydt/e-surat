@@ -91,7 +91,7 @@ class LetterController extends Controller
 
     // Ambil data untuk ditampilkan di halaman preview
     $data = $lembur->toArray();
-
+    dd($data);
     return view('pages.admin.letter.print-lembur', compact('data'));
     }
 
@@ -323,7 +323,7 @@ public function arsip()
 }
 public function printArsip($id)
 {
-    $lembur = Lembur::find($id); // Jangan gunakan findOrFail dulu untuk debugging
+    $lembur = Lembur::findOrFail($id); // Jangan gunakan findOrFail dulu untuk debugging
 
     if (!$lembur) {
         // Kembalikan pesan error jika tidak ditemukan
@@ -332,17 +332,26 @@ public function printArsip($id)
 
     // Coba gunakan dd() untuk melihat isi dari $lembur
     // dd($lembur);
+    $data = $lembur->toArray();
 
-    return view('pages.admin.letter.arsip', compact('lembur'));
+    // return view('pages.admin.letter.arsip', compact('lembur'));
+    return view('pages.admin.letter.print-lembur', compact('data'));
 }
-
 
 
 public function arsipBlokir()
 {
     $blokir = Blokir::all();
-    return view('pages.admin.letter.arsip-blokir', compact('blokir')); 
+    return view('pages.admin.letter.arsip-blokir', compact('blokir'));
 }
+
+public function printArsipBlokir($id)
+{
+    $blokir = Blokir::findOrFail($id);
+    $data = $blokir->toArray();
+    return view('pages.admin.letter.print-blokir', compact('data'));
+}
+
 
 public function arsipDaftar()
 {
@@ -350,10 +359,24 @@ public function arsipDaftar()
     return view('pages.admin.letter.arsip-daftar', compact('daftar')); 
 }
 
+public function printArsipDaftar($id)
+{
+    $daftar = Daftar::findOrFail($id);
+    $data = $daftar->toArray();
+    return view('pages.admin.letter.print-daftar', compact('data'));
+}
+
+
 public function arsipJaminan()
 {
     $jaminan = Jaminan::all();
     return view('pages.admin.letter.arsip-jaminan', compact('jaminan')); 
+}
+public function printArsipJaminan($id)
+{
+    $jaminan = Jaminan::findOrFail($id);
+    $data = $jaminan->toArray();
+    return view('pages.admin.letter.print-jaminan', compact('data'));
 }
 
 public function arsipSewa()
@@ -362,6 +385,12 @@ public function arsipSewa()
     return view('pages.admin.letter.arsip-sewa', compact('sewa')); 
 }
 
+public function printArsipSewa($id)
+{
+    $sewa = Sewa::findOrFail($id);
+    $data = $sewa->toArray();
+    return view('pages.admin.letter.print-sewa', compact('data'));
+}
 
     // public function printPemblokiran(Request $request)
     // {
